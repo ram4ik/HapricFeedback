@@ -10,26 +10,62 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Button(action: {
-                //errorHapticFeedback()
-                hapticFeedback(type: .error)
-            }, label: {
-                Text("Error Haptic Feedback")
-            }).padding()
+            Form {
+                Section(header: Text("Haptics")) {
+                    Button(action: {
+                        //errorHapticFeedback()
+                        hapticFeedback(type: .error)
+                    }, label: {
+                        Text("Error Haptic Feedback")
+                    }).padding()
+                    
+                    Button(action: {
+                        //successHapticFeedback()
+                        hapticFeedback(type: .success)
+                    }, label: {
+                        Text("Success Haptic Feedback")
+                    }).padding()
+                    
+                    Button(action: {
+                        //warningHapticFeedback()
+                        hapticFeedback(type: .warning)
+                    }, label: {
+                        Text("Warning Haptic Feedback")
+                    }).padding()
+                }
             
-            Button(action: {
-                //successHapticFeedback()
-                hapticFeedback(type: .success)
-            }, label: {
-                Text("Success Haptic Feedback")
-            }).padding()
-            
-            Button(action: {
-                //warningHapticFeedback()
-                hapticFeedback(type: .warning)
-            }, label: {
-                Text("Warning Haptic Feedback")
-            }).padding()
+                Section(header: Text("Impact")) {
+                    Button(action: {
+                        impactFeedback(style: .heavy)
+                    }, label: {
+                        Text("Heavy Haptic Feedback")
+                    }).padding()
+                    
+                    Button(action: {
+                        impactFeedback(style: .light)
+                    }, label: {
+                        Text("Light Haptic Feedback")
+                    }).padding()
+                    
+                    Button(action: {
+                        impactFeedback(style: .medium)
+                    }, label: {
+                        Text("Medium Haptic Feedback")
+                    }).padding()
+                    
+                    Button(action: {
+                        impactFeedback(style: .rigid)
+                    }, label: {
+                        Text("Rigid Haptic Feedback")
+                    }).padding()
+                    
+                    Button(action: {
+                        impactFeedback(style: .soft)
+                    }, label: {
+                        Text("Soft Haptic Feedback")
+                    }).padding()
+                }
+            }
         }
     }
     
@@ -47,6 +83,10 @@ struct ContentView: View {
     
     func hapticFeedback(type: UINotificationFeedbackGenerator.FeedbackType) {
         UINotificationFeedbackGenerator().notificationOccurred(type)
+    }
+    
+    func impactFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        UIImpactFeedbackGenerator(style: style).impactOccurred()
     }
 }
 
