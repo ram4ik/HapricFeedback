@@ -11,19 +11,22 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button(action: {
-                errorHapticFeedback()
+                //errorHapticFeedback()
+                hapticFeedback(type: .error)
             }, label: {
                 Text("Error Haptic Feedback")
             }).padding()
             
             Button(action: {
-                successHapticFeedback()
+                //successHapticFeedback()
+                hapticFeedback(type: .success)
             }, label: {
                 Text("Success Haptic Feedback")
             }).padding()
             
             Button(action: {
-                warningHapticFeedback()
+                //warningHapticFeedback()
+                hapticFeedback(type: .warning)
             }, label: {
                 Text("Warning Haptic Feedback")
             }).padding()
@@ -40,6 +43,10 @@ struct ContentView: View {
     
     func warningHapticFeedback() {
         UINotificationFeedbackGenerator().notificationOccurred(.warning)
+    }
+    
+    func hapticFeedback(type: UINotificationFeedbackGenerator.FeedbackType) {
+        UINotificationFeedbackGenerator().notificationOccurred(type)
     }
 }
 
